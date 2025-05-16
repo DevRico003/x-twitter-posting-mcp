@@ -1,25 +1,20 @@
 FROM python:3.12-slim
 
-WORKDIR /app
-
-# Set build arguments
 ARG PORT=8054
 
-# Set environment variables
-ENV PORT=$PORT
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH=/app
+WORKDIR /app
 
-# Install dependencies
-COPY pyproject.toml ./
-RUN pip install --no-cache-dir uv && \
-    uv pip install --no-cache-dir -e .
+# Install uv
+RUN pip install uv
 
-# Copy source code
+# Copy the MCP server files
 COPY . .
 
-# Expose the port
-EXPOSE $PORT
+# Install packages
+RUN python -m venv .venv
+RUN uv pip install -e .
 
-# Run the MCP server
-CMD ["python", "src/main.py"]
+EXPOSE ${PORT}
+
+# Command to run the MCP server
+CMD ["uv", "run", "src/main.py"]
