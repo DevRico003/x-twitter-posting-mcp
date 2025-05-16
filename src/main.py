@@ -43,7 +43,7 @@ mcp = FastMCP(
     description="MCP server for posting tweets and threads to X (Twitter)",
     lifespan=twitter_lifespan,
     host=os.getenv("HOST", "0.0.0.0"),
-    port=int(os.getenv("PORT", "8050"))
+    port=int(os.getenv("PORT", "8054"))
 )        
 
 @mcp.tool()

@@ -3,7 +3,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Set build arguments
-ARG PORT=8050
+ARG PORT=8054
 
 # Set environment variables
 ENV PORT=$PORT
