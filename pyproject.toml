@@ -1,0 +1,15 @@
+[project]
+name = "x-twitter-posting-mcp"
+version = "0.1.0"
+description = "MCP server for posting tweets and threads to X (Twitter)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.3.0",
+    "tweepy>=4.14.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.scripts]
+x-twitter-posting-mcp = "main:main"
